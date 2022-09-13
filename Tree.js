@@ -35,7 +35,13 @@ export class Tree {
     this.levelOrder(callback, children);
   }
 
-  inOrder(callback) {}
+  inOrder(callback, children = [this.root]) {
+    const node = children[children.length - 1];
+    node.left && children.push(node.left) && this.inOrder(callback, children);
+    callback(node);
+    node.right && children.push(node.right) && this.inOrder(callback, children);
+  }
+
   preOrder(callback) {}
   postOrder(callback) {}
   height(node) {}

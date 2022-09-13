@@ -7,11 +7,11 @@ describe('Tree object methods', () => {
     tree = new Tree([1, 2, 3, 4, 5, 6, 7, 8, 9]);
   });
 
-  it('sorts provided array', () => {
+  it('imported mergeSort()', () => {
     expect(tree.root.value).toBe(5);
   });
 
-  it('buildTree() initializes balanced binary tree', () => {
+  it('buildTree()', () => {
     const node = tree.root;
     expect(node.value).toBe(5);
     expect(node.left.value).toBe(2);
@@ -24,12 +24,21 @@ describe('Tree object methods', () => {
     expect(node.right.right.right.value).toBe(9);
   });
 
-  it('levelOrder() provides breadth-first traversal', () => {
+  it('levelOrder()', () => {
     const result = [];
     const fillResult = (node) => {
       result.push(node.value);
     };
     tree.levelOrder(fillResult);
     expect(result).toStrictEqual([5, 2, 7, 1, 3, 6, 8, 4, 9]);
+  });
+
+  it('inOrder()', () => {
+    const result = [];
+    const fillResult = (node) => {
+      result.push(node.value);
+    };
+    tree.inOrder(fillResult);
+    expect(result).toStrictEqual([1, 2, 3, 4, 5, 6, 7, 8, 9]);
   });
 });
