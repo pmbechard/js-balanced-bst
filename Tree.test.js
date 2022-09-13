@@ -63,4 +63,8 @@ describe('Tree object methods', () => {
     tree.postOrder(fillResult);
     expect(result).toStrictEqual([1, 4, 3, 2, 6, 9, 8, 7, 5]);
   });
+
+  it('find()', () => {
+    expect(tree.find(6).value).toBe(6);
+  });
 });

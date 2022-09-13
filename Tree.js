@@ -28,10 +28,6 @@ export class Tree {
     return result;
   }
 
-  insert(value) {}
-  delete(value) {}
-  find(value) {}
-
   levelOrder(callback, children = [this.root]) {
     if (children.length === 0) return;
     const node = children[0];
@@ -67,6 +63,16 @@ export class Tree {
     callback(node);
   }
 
+  insert(value) {}
+  delete(value) {}
+  find(value) {
+    let result;
+    const checkValue = (node) => {
+      if (value == node.value) result = node;
+    };
+    this.levelOrder(checkValue);
+    return result;
+  }
   height(node) {}
   depth(node) {}
   isBalanced() {}
