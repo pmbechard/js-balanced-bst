@@ -19,7 +19,14 @@ export class Tree {
     return node;
   }
 
-  toString() {}
+  toArray() {
+    const result = [];
+    const fillResult = (node) => {
+      result.push(node.value);
+    };
+    this.levelOrder(fillResult);
+    return result;
+  }
 
   insert(value) {}
   delete(value) {}

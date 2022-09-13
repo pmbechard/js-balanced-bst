@@ -24,6 +24,10 @@ describe('Tree object methods', () => {
     expect(node.right.right.right.value).toBe(9);
   });
 
+  it('toArray()', () => {
+    expect(tree.toArray()).toStrictEqual([5, 2, 7, 1, 3, 6, 8, 4, 9]);
+  });
+
   it('levelOrder()', () => {
     const result = [];
     const fillResult = (node) => {
