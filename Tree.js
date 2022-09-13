@@ -62,16 +62,16 @@ export class Tree {
       this.postOrder(callback, children);
     callback(node);
   }
-  
+
   find(value) {
     let result;
     const checkValue = (node) => {
       if (value == node.value) result = node;
     };
     this.levelOrder(checkValue);
-    return result;
+    return result || null;
   }
-  
+
   insert(value) {}
   delete(value) {}
   height(node) {}
