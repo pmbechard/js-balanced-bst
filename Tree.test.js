@@ -66,5 +66,6 @@ describe('Tree object methods', () => {
 
   it('find()', () => {
     expect(tree.find(6).value).toBe(6);
+    expect(tree.find(6)).toStrictEqual(tree.root.right.left);
   });
 });

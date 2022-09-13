@@ -62,9 +62,7 @@ export class Tree {
       this.postOrder(callback, children);
     callback(node);
   }
-
-  insert(value) {}
-  delete(value) {}
+  
   find(value) {
     let result;
     const checkValue = (node) => {
@@ -73,6 +71,9 @@ export class Tree {
     this.levelOrder(checkValue);
     return result;
   }
+  
+  insert(value) {}
+  delete(value) {}
   height(node) {}
   depth(node) {}
   isBalanced() {}
