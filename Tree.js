@@ -42,7 +42,15 @@ export class Tree {
     node.right && children.push(node.right) && this.inOrder(callback, children);
   }
 
-  preOrder(callback) {}
+  preOrder(callback, children = [this.root]) {
+    const node = children[children.length - 1];
+    callback(node);
+    node.left && children.push(node.left) && this.preOrder(callback, children);
+    node.right &&
+      children.push(node.right) &&
+      this.preOrder(callback, children);
+  }
+
   postOrder(callback) {}
   height(node) {}
   depth(node) {}
