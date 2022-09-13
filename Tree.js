@@ -10,20 +10,34 @@ export class Tree {
     return this.buildTree();
   }
 
-  buildTree() {
-    // FIXME:
-    const root = new Node(this.arr[parseInt(this.arr.length / 2)]);
-    return root;
+  buildTree(subarray = this.arr) {
+    const node = new Node(subarray[parseInt((subarray.length - 1) / 2)]);
+    let leftArr = subarray.slice(0, parseInt((subarray.length - 1) / 2));
+    node.left = leftArr.length > 0 ? this.buildTree(leftArr) : null;
+    let rightArr = subarray.slice(parseInt((subarray.length - 1) / 2) + 1);
+    node.right = rightArr.length > 0 ? this.buildTree(rightArr) : null;
+    return node;
   }
 
   toString() {}
+
   insert(value) {}
   delete(value) {}
   find(value) {}
-  levelOrder(callback) {}
+
+  levelOrder(callback, children = [this.root]) {
+    if (children.length === 0) return;
+    const node = children[0];
+    children = children.slice(1);
+    callback(node);
+    node.left && children.push(node.left);
+    node.right && children.push(node.right);
+    this.levelOrder(callback, children);
+  }
+
   inOrder(callback) {}
-  preorder(callback) {}
-  postorder(callback) {}
+  preOrder(callback) {}
+  postOrder(callback) {}
   height(node) {}
   depth(node) {}
   isBalanced() {}
