@@ -50,4 +50,13 @@ describe('Tree object methods', () => {
     tree.preOrder(fillResult);
     expect(result).toStrictEqual([5, 2, 1, 3, 4, 7, 6, 8, 9]);
   });
+
+  it('postOrder()', () => {
+    const result = [];
+    const fillResult = (node) => {
+      result.push(node.value);
+    };
+    tree.postOrder(fillResult);
+    expect(result).toStrictEqual([1, 4, 3, 2, 6, 9, 8, 7, 5]);
+  });
 });

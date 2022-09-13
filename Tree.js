@@ -51,7 +51,15 @@ export class Tree {
       this.preOrder(callback, children);
   }
 
-  postOrder(callback) {}
+  postOrder(callback, children = [this.root]) {
+    const node = children[children.length - 1];
+    node.left && children.push(node.left) && this.postOrder(callback, children);
+    node.right &&
+      children.push(node.right) &&
+      this.postOrder(callback, children);
+    callback(node);
+  }
+
   height(node) {}
   depth(node) {}
   isBalanced() {}
