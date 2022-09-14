@@ -110,7 +110,13 @@ export class Tree {
     return this.height() - this.height(node);
   }
 
-  isBalanced() {}
+  isBalanced() {
+    return (
+      Math.abs(this.height(this.root.left) - this.height(this.root.right)) <= 1
+    );
+  }
 
-  rebalance() {}
+  rebalance() {
+    this.buildTree();
+  }
 }
