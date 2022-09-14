@@ -96,7 +96,11 @@ export class Tree {
     this.root = mergeSort(this.arr.concat(value));
   }
 
-  delete(value, node = this.root) {}
+  delete(value) {
+    this.root = this.arr.filter((node) => {
+      return node !== value;
+    });
+  }
 
   height(node = this.root, count = 0) {
     if (!node) return;

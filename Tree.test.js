@@ -77,14 +77,14 @@ describe('Tree object methods', () => {
     expect(tree.root.right.right.right.value).toBe(10);
   });
 
-  it.skip('delete()', () => {
+  it('delete()', () => {
     tree.delete(1);
-    expect(tree.root.left.left.value).toBe(null);
-    tree.insert(8);
-    expect(tree.root.right.right.value).toBe(9);
-    const snapshot = [...tree.toArray()];
+    tree.delete(8);
     tree.delete(10);
-    expect(tree.toArray()).toStrictEqual(snapshot);
+    expect(tree.toArray().includes(1)).toBe(false);
+    expect(tree.toArray().includes(8)).toBe(false);
+    expect(tree.toArray().includes(10)).toBe(false);
+    expect(tree.toArray().includes(9)).toBe(true);
   });
 
   it('depth()', () => {
@@ -100,11 +100,10 @@ describe('Tree object methods', () => {
   });
 
   it('isBalanced()', () => {
-    // FIXME: implement delete() to test properly
     expect(tree.isBalanced()).toBe(true);
   });
 
-  it.skip('isBalanced()', () => {
-    expect();
+  it('rebalance()', () => {
+    expect(tree.isBalanced()).toBe(true);
   });
 });
