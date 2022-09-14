@@ -76,4 +76,26 @@ describe('Tree object methods', () => {
     expect(tree.root.left.left.value).toBe(0);
     expect(tree.root.right.right.right.value).toBe(10);
   });
+
+  it('delete()', () => {
+    // tree.delete(1);
+    // expect(tree.root.left.left.value).toBe(null);
+    // tree.insert(8);
+    // expect(tree.root.right.right.value).toBe(9);
+    // const snapshot = [...tree.toArray()];
+    // tree.delete(10);
+    // expect(tree.toArray()).toStrictEqual(snapshot);
+  });
+
+  it('depth()', () => {
+    expect(tree.depth()).toBe(0);
+    expect(tree.depth(tree.root.left)).toBe(1);
+    expect(tree.depth(tree.root.right.right.right)).toBe(3);
+  });
+
+  it('height()', () => {
+    expect(tree.height()).toBe(3);
+    expect(tree.height(tree.root.left)).toBe(2);
+    expect(tree.height(tree.root.right.right.right)).toBe(0);
+  });
 });

@@ -96,9 +96,21 @@ export class Tree {
     this.root = mergeSort(this.arr.concat(value));
   }
 
-  delete(value) {}
-  height(node) {}
-  depth(node) {}
+  delete(value, node = this.root) {}
+
+  height(node = this.root, count = 0) {
+    if (!node) return;
+    if (!node.left && !node.right) return count;
+    let left = this.height(node.left, count + 1);
+    let right = this.height(node.right, count + 1);
+    return left > right ? left : right;
+  }
+
+  depth(node = this.root, count = 0) {
+    return this.height() - this.height(node);
+  }
+
   isBalanced() {}
+
   rebalance() {}
 }
