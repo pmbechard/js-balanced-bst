@@ -1,5 +1,5 @@
-import { mergeSort } from './mergeSort';
-import { Node } from './Node';
+import { mergeSort } from './mergeSort.js';
+import { Node } from './Node.js';
 
 export class Tree {
   constructor(arr) {
@@ -10,9 +10,29 @@ export class Tree {
     return this.buildTree();
   }
 
+  set root(arr) {
+    this.arr = arr;
+  }
+
+  prettyPrint(node = this.root, prefix = '', isLeft = true) {
+    if (node.right !== null) {
+      this.prettyPrint(
+        node.right,
+        `${prefix}${isLeft ? '│   ' : '    '}`,
+        false
+      );
+    }
+    console.log(`${prefix}${isLeft ? '└── ' : '┌── '}${node.value}`);
+    if (node.left !== null) {
+      this.prettyPrint(node.left, `${prefix}${isLeft ? '    ' : '│   '}`, true);
+    }
+  }
+
   buildTree(subarray = this.arr) {
     const node = new Node(subarray[parseInt((subarray.length - 1) / 2)]);
     let leftArr = subarray.slice(0, parseInt((subarray.length - 1) / 2));
+    if (leftArr.length === 2) {
+    }
     node.left = leftArr.length > 0 ? this.buildTree(leftArr) : null;
     let rightArr = subarray.slice(parseInt((subarray.length - 1) / 2) + 1);
     node.right = rightArr.length > 0 ? this.buildTree(rightArr) : null;
@@ -72,7 +92,10 @@ export class Tree {
     return result || null;
   }
 
-  insert(value) {}
+  insert(value) {
+    this.root = mergeSort(this.arr.concat(value));
+  }
+
   delete(value) {}
   height(node) {}
   depth(node) {}

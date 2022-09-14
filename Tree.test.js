@@ -69,4 +69,11 @@ describe('Tree object methods', () => {
     expect(tree.find(6)).toStrictEqual(tree.root.right.left);
     expect(tree.find(10)).toBe(null);
   });
+
+  it('insert()', () => {
+    tree.insert(0);
+    tree.insert(10);
+    expect(tree.root.left.left.value).toBe(0);
+    expect(tree.root.right.right.right.value).toBe(10);
+  });
 });
